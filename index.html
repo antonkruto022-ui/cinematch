@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMatch — Умный подбор фильмов с постерами | Курицын Антон 31-ОИБ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-cinema">
+    <!-- Шапка сайта -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="brand-logo">
+                <span class="logo-popcorn">🍿</span>
+                <span class="logo-text">Cine<strong>Match</strong></span>
+            </a>
+            
+
+            <nav class="nav-links">
+                <a href="#filter-section">Подбор фильма</a>
+                <a href="#results-section">Рекомендации</a>
+                <a href="#mood-collections">Подборки</a>
+                <a href="#quick-quiz">Квиз за 60 сек</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="randomMovieNavBtn" class="btn-neon-sm">
+                    🎲 Случайный фильм
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Главный баннер (Hero) -->
+        <section id="hero" class="hero-section">
+            <div class="hero-aurora"></div>
+            <div class="container hero-content">
+                <div class="hero-top-badge">
+                    <span>✨ Умный кинопоиск с обложками и фильтрами по 15+ жанрам</span>
+                </div>
+                <h1 class="hero-title">
+                    Не знаешь, что посмотреть? <br>
+                    <span class="cinema-gradient-text">Подбери идеальный фильм за минуту</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Хватит листать каталоги часами. Выбери любимый жанр (Ужасы, Фантастика, Комедии и др.), настроение вечера — и получи кинематографический шедевр с рейтингами и постерами.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#filter-section" class="btn btn-gold">
+                        <span>Настроить фильтры подбора</span>
+                        <span class="btn-arrow">↓</span>
+                    </a>
+                    <button id="heroRandomBtn" class="btn btn-glass">
+                        <span>🎲 Случайный хит с обложкой</span>
+                    </button>
+                </div>
+
+                <!-- Быстрые счётчики платформы -->
+                <div class="hero-stats-bar">
+                    <div class="h-stat">
+                        <span class="h-stat-num">500+</span>
+                        <span class="h-stat-label">Фильмов с HD-обложками</span>
+                    </div>
+                    <div class="h-stat-divider"></div>
+                    <div class="h-stat">
+                        <span class="h-stat-num">15</span>
+                        <span class="h-stat-label">Жанровых категорий</span>
+                    </div>
+                    <div class="h-stat-divider"></div>
+                    <div class="h-stat">
+                        <span class="h-stat-num">8.4+</span>
+                        <span class="h-stat-label">Средний рейтинг фильмов</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Основной интерактивный фильтр подбора -->
+        <section id="filter-section" class="section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="sub-badge">Конфигуратор просмотра</span>
+                    <h2 class="section-heading">Параметры вашего идеального фильма</h2>
+                    <p class="section-subtext">Отметьте критерии, которые вам важны прямо сейчас:</p>
+                </div>
+
+                <div class="filter-panel">
+                    <!-- 1. Жанры -->
+                    <div class="filter-group">
+                        <div class="filter-group-header">
+                            <span class="filter-step">1</span>
+                            <h3>Выберите жанр:</h3>
+                        </div>
+                        <div class="genre-tags-grid" id="genreContainer">
+                            <button class="tag-btn active" data-genre="all">Все жанры</button>
+                            <button class="tag-btn tag-horror" data-genre="horror">🧟‍♂️ Ужасы</button>
+                            <button class="tag-btn" data-genre="sci-fi">🚀 Фантастика</button>
+                            <button class="tag-btn" data-genre="thriller">🔪 Триллер</button>
+                            <button class="tag-btn" data-genre="mystery">🔮 Мистика</button>
+                            <button class="tag-btn" data-genre="fantasy">🧙‍♂️ Фэнтези</button>
+                            <button class="tag-btn" data-genre="detective">🔍 Детектив</button>
+                            <button class="tag-btn" data-genre="comedy">😂 Комедия</button>
+                            <button class="tag-btn" data-genre="drama">🎭 Драма</button>
+                            <button class="tag-btn" data-genre="action">💥 Боевик</button>
+                            <button class="tag-btn" data-genre="crime">🕵️ Криминал</button>
+                            <button class="tag-btn" data-genre="adventure">🗺️ Приключения</button>
+                            <button class="tag-btn" data-genre="anime">🏮 Аниме / Мультфильм</button>
+                            <button class="tag-btn" data-genre="biography">📜 Биография</button>
+                            <button class="tag-btn" data-genre="romance">❤️ Мелодрама</button>
+                        </div>
+                    </div>
+
+                    <!-- 2. Настроение и вайб -->
+                    <div class="filter-group">
+                        <div class="filter-group-header">
+                            <span class="filter-step">2</span>
+                            <h3>Какое настроение вечера?</h3>
+                        </div>
+                        <div class="mood-chips-grid" id="moodContainer">
+                            <button class="chip-btn active" data-mood="all">Любое настроение</button>
+                            <button class="chip-btn chip-horror" data-mood="horror">🩸 Леденящий ужас & Страх</button>
+                            <button class="chip-btn" data-mood="mind-blown">🤯 Взрыв мозга & Загадки</button>
+                            <button class="chip-btn" data-mood="laugh">🎉 Посмеяться и расслабиться</button>
+                            <button class="chip-btn" data-mood="intense">⚡ Напряжение до мурашек</button>
+                            <button class="chip-btn" data-mood="cozy">☕ Уютно и душевно</button>
+                            <button class="chip-btn" data-mood="thoughtful">🌌 Подумать о жизни</button>
+                            <button class="chip-btn" data-mood="adrenaline">🔥 Драйв и адреналин</button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Дополнительные параметры (Эпоха и Рейтинг) -->
+                    <div class="filter-row-dual">
+                        <div class="filter-subgroup">
+                            <label class="input-label" for="eraSelect">⏳ Эпоха кино:</label>
+                            <select id="eraSelect" class="custom-select">
+                                <option value="all">Любое время выхода</option>
+                                <option value="new">Свежие новинки (2020–2026)</option>
+                                <option value="golden">Золотая эпоха (2000–2019)</option>
+                                <option value="retro">Культовая классика (1970–1999)</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-subgroup">
+                            <label class="input-label" for="ratingRange">
+                                ⭐ Минимальный рейтинг: <strong id="ratingValueText">7.0</strong>+
+                            </label>
+                            <input type="range" id="ratingRange" min="7.0" max="8.8" step="0.2" value="7.0" class="custom-range">
+                        </div>
+                    </div>
+
+                    <!-- Кнопки действия -->
+                    <div class="filter-actions-bar">
+                        <button id="findMoviesBtn" class="btn btn-gold btn-large">
+                            <span>🍿 Подобрать фильмы</span>
+                            <span class="btn-glow-pill">Найти</span>
+                        </button>
+                        <button id="resetFiltersBtn" class="btn btn-secondary">
+                            Сбросить фильтры
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция результатов подбора с обложками -->
+        <section id="results-section" class="section section-darker">
+            <div class="container">
+                <div class="results-header">
+                    <div>
+                        <span class="sub-badge" id="resultsCountBadge">Найдено фильмов</span>
+                        <h2 class="section-heading" id="resultsHeading">Фильмы с обложками для вас</h2>
+                    </div>
+                    <div class="sort-wrap">
+                        <label for="sortSelect">Сортировка:</label>
+                        <select id="sortSelect" class="custom-select-sm">
+                            <option value="rating">По рейтингу (высокий →)</option>
+                            <option value="year">По году новизны</option>
+                            <option value="runtime">По хронометражу</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Сетка фильмов с красивыми обложками -->
+                <div class="movies-grid" id="moviesGrid">
+                    <!-- Заполняется динамически скриптом с <img> обложками -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Готовые тематические подборки по настроению -->
+        <section id="mood-collections" class="section">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="sub-badge">Коллекции недели</span>
+                    <h2 class="section-heading">Популярные подборки в 1 клик</h2>
+                    <p class="section-subtext">Быстрый доступ к проверенным сценариям для кинопросмотра:</p>
+                </div>
+
+                <div class="collections-grid">
+                    <div class="collection-card col-c4" data-preset="horror">
+                        <div class="col-icon">🧟‍♂️</div>
+                        <h3>Ночной кошмар: Ужасы и скримеры</h3>
+                        <p>Леденящий душу саспенс, призраки и атмосфера абсолютной темноты.</p>
+                        <span class="col-btn">Выбрать ужасы →</span>
+                    </div>
+
+                    <div class="collection-card col-c1" data-preset="mind-blown">
+                        <div class="col-icon">🌀</div>
+                        <h3>Сломает мозг с неожиданной концовкой</h3>
+                        <p>Фильмы-лабиринты, заставляющие переосмыслить финал.</p>
+                        <span class="col-btn">Выбрать эту подборку →</span>
+                    </div>
+
+                    <div class="collection-card col-c2" data-preset="laugh">
+                        <div class="col-icon">🍿</div>
+                        <h3>Для просмотра с друзьями и попкорном</h3>
+                        <p>Легкий юмор, драйв и море положительных эмоций.</p>
+                        <span class="col-btn">Выбрать эту подборку →</span>
+                    </div>
+
+                    <div class="collection-card col-c3" data-preset="cozy">
+                        <div class="col-icon">🕯️</div>
+                        <h3>Теплый ламповый вечер под пледом</h3>
+                        <p>Глубокие трогательные истории с душевной атмосферой.</p>
+                        <span class="col-btn">Выбрать эту подборку →</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Быстрый интерактивный мини-квиз -->
+        <section id="quick-quiz" class="section section-darker">
+            <div class="container">
+                <div class="quiz-container-box">
+                    <div class="quiz-visual-side">
+                        <span class="quiz-badge">Экспресс-тест</span>
+                        <h2>Не можешь определиться?</h2>
+                        <p>Ответь на 3 быстрых вопроса, и алгоритм выберет ровно один идеальный фильм под эту минуту с показом обложки.</p>
+                        <div class="quiz-film-icon">🎬</div>
+                    </div>
+
+                    <div class="quiz-interactive-side" id="quizApp">
+                        <div class="quiz-step-bar">
+                            <span id="quizStepText">Вопрос 1 из 3</span>
+                            <div class="quiz-track">
+                                <div id="quizFill" class="quiz-fill" style="width: 33%;"></div>
+                            </div>
+                        </div>
+
+                        <h3 id="quizQuestionTitle" class="quiz-q-title">Кто составляет компанию для просмотра?</h3>
+                        
+                        <div id="quizOptionsList" class="quiz-options-grid">
+                            <!-- Опции генерируются через JS -->
+                        </div>
+
+                        <div id="quizResultBox" class="quiz-result-box" style="display: none;">
+                            <!-- Результат квиза -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальное окно деталей фильма с большой обложкой -->
+    <div id="movieModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-card">
+            <button id="modalCloseBtn" class="modal-close" aria-label="Закрыть">&times;</button>
+            <div class="modal-content" id="modalDynamicContent">
+                <!-- Контент модалки с постером -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал сайта с авторством -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-author-brand">
+                <div class="f-logo">
+                    <span class="logo-popcorn">🍿</span>
+                    <span class="logo-text">Cine<strong>Match</strong></span>
+                </div>
+                <div class="author-official-card">
+                    <span class="author-status">Автор и разработчик проекта:</span>
+                    <h3 class="author-fio">Курицын Антон</h3>
+                    <div class="author-group-badge">Курсант группы <strong>31-ОИБ</strong></div>
+                    <p class="author-spec">Специальность: Обеспечение информационной безопасности</p>
+                </div>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Навигация платформы</h4>
+                <a href="#filter-section">Конфигуратор фильмов</a>
+                <a href="#results-section">Рекомендации</a>
+                <a href="#mood-collections">Тематические подборки</a>
+                <a href="#quick-quiz">Экспресс-квиз</a>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Популярные жанры</h4>
+                <a href="#filter-section" class="genre-quick-link" data-genre="horror">🧟‍♂️ Ужасы</a>
+                <a href="#filter-section" class="genre-quick-link" data-genre="sci-fi">🚀 Фантастика</a>
+                <a href="#filter-section" class="genre-quick-link" data-genre="thriller">🔪 Триллеры</a>
+                <a href="#filter-section" class="genre-quick-link" data-genre="mystery">🔮 Мистика</a>
+                <a href="#filter-section" class="genre-quick-link" data-genre="fantasy">🧙‍♂️ Фэнтези</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>© 2026 CineMatch. Создано курсантом 31-ОИБ Курицын Антон.</p>
+                <p class="footer-note">Интерактивный сервис персонального подбора кинофильмов с обложками</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
